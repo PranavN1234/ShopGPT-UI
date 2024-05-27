@@ -20,8 +20,10 @@ struct ProductListView: View {
                     AsyncImage(url: url)
                         .frame(width: 50, height: 50)
                 }
-                Link("Buy Now", destination: URL(string: product.link)!)
-                    .foregroundColor(.blue)
+                if let searchQuery = product.search_query, let url = URL(string: searchQuery) {
+                                    Link("Buy Now", destination: url)
+                                        .foregroundColor(.blue)
+                        }
             }
             .padding()
         }

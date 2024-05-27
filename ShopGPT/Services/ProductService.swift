@@ -12,7 +12,7 @@ class ProductService {
     private init() {}
 
     func fetchProducts(for productName: String, completion: @escaping (Result<[Product], Error>) -> Void) {
-        guard let url = URL(string: "https://92d5-2600-4808-6030-1400-44e3-2d03-d24a-f11c.ngrok-free.app/shop-products") else { return }
+        guard let url = URL(string: "https://de74-2600-4808-6030-1400-44e3-2d03-d24a-f11c.ngrok-free.app/shop-products") else { return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

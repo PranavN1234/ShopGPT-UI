@@ -24,7 +24,7 @@ class ImageUploadViewModel: ObservableObject {
         }
     }
 
-    func fetchProducts() {
+    func fetchProducts(completion: @escaping () -> Void) {
         guard let productName = productName else { return }
 
         isLoading = true
@@ -35,15 +35,33 @@ class ImageUploadViewModel: ObservableObject {
                 case .success(let products):
                     self?.products = products
                     self?.navigationDestination = .products
+                    completion()
                 case .failure(let error):
-                    print("Failed to fetch this products: \(error)")
+                    print("Failed to fetch products: \(error)")
                 }
             }
         }
     }
 
-    func navigateToLoadingAndFetchProducts() {
+    func navigateToLoadingAndFetchProducts(completion: @escaping () -> Void) {
         navigationDestination = .loading
-        fetchProducts()
+        fetchProducts {
+            self.navigationDestination = .products
+            completion()
+        }
     }
+
+    func resetNavigation() {
+        navigationDestination = nil
+    }
+    
+    func reset() {
+            selectedImage = nil
+            productName = nil
+            products = []
+            isShowingImagePicker = false
+            isCamera = false
+            isLoading = false
+            navigationDestination = nil
+        }
 }
