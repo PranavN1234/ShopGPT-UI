@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  ShopGPT
 //
-//  Created by Surya Das on 5/26/24.
+//  Created by Pranav Iyer on 5/26/24.
 //
 
 import SwiftUI
