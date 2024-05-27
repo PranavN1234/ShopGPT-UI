@@ -36,7 +36,7 @@ class ImageUploadViewModel: ObservableObject {
                     self?.products = products
                     self?.navigationDestination = .products
                 case .failure(let error):
-                    print("Failed to fetch products: \(error)")
+                    print("Failed to fetch this product: \(error)")
                 }
             }
         }
