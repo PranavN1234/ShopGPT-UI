@@ -72,12 +72,14 @@ struct ImageUploadView: View {
                             VStack {
                                 Image(systemName: "photo")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)  // Adjust size as needed
                                 Text("Select from Gallery")
-                                    .foregroundColor(.blue)
                             }
+                            .foregroundColor(.black)
                             .padding()
+                            .frame(width: 140, height: 100) // Specify exact size for the button content
                             .background(Color(UIColor.systemGray5))
                             .cornerRadius(10)
                         }
@@ -90,17 +92,21 @@ struct ImageUploadView: View {
                             VStack {
                                 Image(systemName: "camera")
                                     .resizable()
-                                    .frame(width: 50, height: 50)
                                     .foregroundColor(.green)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)  // Ensure image size is the same as the first button
                                 Text("Take a Photo")
-                                    .foregroundColor(.green)
                             }
+                            .foregroundColor(.black)
                             .padding()
+                            .frame(width: 140, height: 100) // Ensure the frame is identical to the first button
                             .background(Color(UIColor.systemGray5))
                             .cornerRadius(10)
                         }
                         .padding()
                     }
+                    .frame(maxWidth: .infinity)
+
                 }
             }
             .padding()
