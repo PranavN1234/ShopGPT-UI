@@ -34,3 +34,4 @@ fastlane/screenshots/**/*.png
 
 # App Icon
 appiconset/
+*.xcuserstate
