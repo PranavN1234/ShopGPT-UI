@@ -7,6 +7,8 @@
 import Foundation
 
 enum NavigationDestination: Hashable {
+    case confirmImage
+    case uploadImage
     case loading
     case products
 }

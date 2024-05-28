@@ -89,7 +89,7 @@ struct VerificationView: View {
             )
         }
         .background(
-            NavigationLink(destination: ImageUploadView(), isActive: $loginData.isLoggedIn) {
+            NavigationLink(destination: ImageSelectionView(), isActive: $loginData.isLoggedIn) {
                 EmptyView()
             }
         )

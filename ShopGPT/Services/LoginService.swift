@@ -13,7 +13,7 @@ class LoginService {
     private init() {}
     
     func sendOTP(phoneNumber: String, completion: @escaping (Result<String, Error>) -> Void) {
-        guard let url = URL(string: "https://7e3a-2600-4808-6030-1400-a144-c0f9-d92e-d64.ngrok-free.app/send-otp") else { return }
+        guard let url = URL(string: "\(Config.baseURL)/send-otp") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -47,7 +47,7 @@ class LoginService {
     }
     
     func verifyOTP(phoneNumber: String, otp: String, completion: @escaping (Result<String, Error>) -> Void) {
-        guard let url = URL(string: "https://7e3a-2600-4808-6030-1400-a144-c0f9-d92e-d64.ngrok-free.app/verify-otp") else { return }
+        guard let url = URL(string: "\(Config.baseURL)/verify-otp") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

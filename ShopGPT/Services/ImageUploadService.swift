@@ -13,7 +13,7 @@ class ImageUploadService {
     private init() {}
 
     func uploadImage(_ image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
-        guard let url = URL(string: "https://7e3a-2600-4808-6030-1400-a144-c0f9-d92e-d64.ngrok-free.app/identify-image") else { return }
+        guard let url = URL(string: "\(Config.baseURL)/identify-image") else { return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

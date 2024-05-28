@@ -26,6 +26,10 @@
 		655AF0662C05B32400B8C8E7 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF0652C05B32400B8C8E7 /* VerificationView.swift */; };
 		655AF0682C05BC7500B8C8E7 /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF0672C05BC7500B8C8E7 /* NumberPad.swift */; };
 		655AF06A2C05C19A00B8C8E7 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF0692C05C19A00B8C8E7 /* LoginService.swift */; };
+		655AF06C2C06666A00B8C8E7 /* ngrokurl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF06B2C06666A00B8C8E7 /* ngrokurl.swift */; };
+		655AF06E2C067D6500B8C8E7 /* ImageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF06D2C067D6500B8C8E7 /* ImageSelectionView.swift */; };
+		655AF0702C06815500B8C8E7 /* ImageConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF06F2C06815500B8C8E7 /* ImageConfirmationView.swift */; };
+		655AF0722C0684E400B8C8E7 /* ImageUploadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF0712C0684E400B8C8E7 /* ImageUploadedView.swift */; };
 		658686462C051EC400BF1A6F /* ProductCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658686452C051EC400BF1A6F /* ProductCarouselView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +55,10 @@
 		655AF0652C05B32400B8C8E7 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		655AF0672C05BC7500B8C8E7 /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
 		655AF0692C05C19A00B8C8E7 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		655AF06B2C06666A00B8C8E7 /* ngrokurl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ngrokurl.swift; sourceTree = "<group>"; };
+		655AF06D2C067D6500B8C8E7 /* ImageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionView.swift; sourceTree = "<group>"; };
+		655AF06F2C06815500B8C8E7 /* ImageConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConfirmationView.swift; sourceTree = "<group>"; };
+		655AF0712C0684E400B8C8E7 /* ImageUploadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadedView.swift; sourceTree = "<group>"; };
 		658686452C051EC400BF1A6F /* ProductCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +138,7 @@
 				4E5CAAE32C04275D00EBA9BC /* NavigationDestination.swift */,
 				4E5CAAE52C04277300EBA9BC /* Product.swift */,
 				655AF0632C05AB1A00B8C8E7 /* Countries.swift */,
+				655AF06B2C06666A00B8C8E7 /* ngrokurl.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,6 +154,9 @@
 				655AF05F2C05A5FD00B8C8E7 /* LoginView.swift */,
 				655AF0652C05B32400B8C8E7 /* VerificationView.swift */,
 				655AF0672C05BC7500B8C8E7 /* NumberPad.swift */,
+				655AF06D2C067D6500B8C8E7 /* ImageSelectionView.swift */,
+				655AF06F2C06815500B8C8E7 /* ImageConfirmationView.swift */,
+				655AF0712C0684E400B8C8E7 /* ImageUploadedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +232,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E5CAAD62C0425E000EBA9BC /* ImageUploadView.swift in Sources */,
+				655AF06C2C06666A00B8C8E7 /* ngrokurl.swift in Sources */,
+				655AF0722C0684E400B8C8E7 /* ImageUploadedView.swift in Sources */,
 				4E5CAAE02C04270C00EBA9BC /* ProductService.swift in Sources */,
 				4E5CAADE2C0426E100EBA9BC /* ImageUploadService.swift in Sources */,
 				4E5CAAD82C04265B00EBA9BC /* LoadingView.swift in Sources */,
@@ -230,9 +244,11 @@
 				4E5CAADC2C0426A100EBA9BC /* ImagePickerService.swift in Sources */,
 				4E5CAAE22C04272D00EBA9BC /* ImageUploadViewModel.swift in Sources */,
 				4E5CAAC22C0424F600EBA9BC /* ShopGPTApp.swift in Sources */,
+				655AF0702C06815500B8C8E7 /* ImageConfirmationView.swift in Sources */,
 				655AF0682C05BC7500B8C8E7 /* NumberPad.swift in Sources */,
 				655AF0602C05A5FD00B8C8E7 /* LoginView.swift in Sources */,
 				655AF06A2C05C19A00B8C8E7 /* LoginService.swift in Sources */,
+				655AF06E2C067D6500B8C8E7 /* ImageSelectionView.swift in Sources */,
 				658686462C051EC400BF1A6F /* ProductCarouselView.swift in Sources */,
 				655AF0642C05AB1A00B8C8E7 /* Countries.swift in Sources */,
 				4E5CAADA2C04267D00EBA9BC /* ProductListView.swift in Sources */,
@@ -381,7 +397,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,7 +430,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

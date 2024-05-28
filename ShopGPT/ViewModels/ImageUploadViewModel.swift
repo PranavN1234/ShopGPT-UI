@@ -8,6 +8,7 @@ class ImageUploadViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var isLoading = false
     @Published var navigationDestination: NavigationDestination?
+    @Published var isShowingImageConfirmation = false
 
     func uploadImage() {
         guard let selectedImage = selectedImage else { return }
@@ -17,6 +18,7 @@ class ImageUploadViewModel: ObservableObject {
                 switch result {
                 case .success(let productName):
                     self?.productName = productName
+                    self?.navigationDestination = .uploadImage
                 case .failure(let error):
                     print("Failed to upload image: \(error)")
                 }
@@ -56,12 +58,13 @@ class ImageUploadViewModel: ObservableObject {
     }
     
     func reset() {
-            selectedImage = nil
-            productName = nil
-            products = []
-            isShowingImagePicker = false
-            isCamera = false
-            isLoading = false
-            navigationDestination = nil
-        }
+        selectedImage = nil
+        productName = nil
+        products = []
+        isShowingImagePicker = false
+        isCamera = false
+        isLoading = false
+        navigationDestination = nil
+        isShowingImageConfirmation = false
+    }
 }
