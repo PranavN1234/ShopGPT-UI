@@ -20,6 +20,7 @@
 		4E5CAAE22C04272D00EBA9BC /* ImageUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAE12C04272D00EBA9BC /* ImageUploadViewModel.swift */; };
 		4E5CAAE42C04275D00EBA9BC /* NavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAE32C04275D00EBA9BC /* NavigationDestination.swift */; };
 		4E5CAAE62C04277300EBA9BC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAE52C04277300EBA9BC /* Product.swift */; };
+		658686462C051EC400BF1A6F /* ProductCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658686452C051EC400BF1A6F /* ProductCarouselView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4E5CAAE12C04272D00EBA9BC /* ImageUploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadViewModel.swift; sourceTree = "<group>"; };
 		4E5CAAE32C04275D00EBA9BC /* NavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestination.swift; sourceTree = "<group>"; };
 		4E5CAAE52C04277300EBA9BC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		658686452C051EC400BF1A6F /* ProductCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				4E5CAAD52C0425E000EBA9BC /* ImageUploadView.swift */,
 				4E5CAAD72C04265B00EBA9BC /* LoadingView.swift */,
 				4E5CAAD92C04267D00EBA9BC /* ProductListView.swift */,
+				658686452C051EC400BF1A6F /* ProductCarouselView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				4E5CAADC2C0426A100EBA9BC /* ImagePickerService.swift in Sources */,
 				4E5CAAE22C04272D00EBA9BC /* ImageUploadViewModel.swift in Sources */,
 				4E5CAAC22C0424F600EBA9BC /* ShopGPTApp.swift in Sources */,
+				658686462C051EC400BF1A6F /* ProductCarouselView.swift in Sources */,
 				4E5CAADA2C04267D00EBA9BC /* ProductListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -112,7 +112,7 @@ struct ImageUploadView: View {
                 case .loading:
                     LoadingView()
                 case .products:
-                    ProductListView(products: viewModel.products)
+                    ProductCarouselView(products: viewModel.products)
                         .onAppear {
                             viewModel.resetNavigation()
                         }

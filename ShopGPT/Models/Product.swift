@@ -12,9 +12,19 @@ struct Product: Identifiable, Codable {
     let price: String
     let search_query: String?
     let website: String
+    
 
     private enum CodingKeys: String, CodingKey {
         case link, logo, name, price, search_query, website
+    }
+
+    init(link: String, logo: String?, name: String, price: String, search_query: String?, website: String) {
+        self.link = link
+        self.logo = logo
+        self.name = name
+        self.price = price
+        self.search_query = search_query
+        self.website = website
     }
 
     init(from decoder: Decoder) throws {
@@ -28,3 +38,4 @@ struct Product: Identifiable, Codable {
         self.website = try container.decode(String.self, forKey: .website)
     }
 }
+
