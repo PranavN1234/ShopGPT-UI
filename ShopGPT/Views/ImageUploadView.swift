@@ -124,6 +124,7 @@ struct ImageUploadView: View {
                 LoadingView()
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
