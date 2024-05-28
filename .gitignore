@@ -35,3 +35,4 @@ fastlane/screenshots/**/*.png
 # App Icon
 appiconset/
 *.xcuserstate
+ShopGPT.xcodeproj/project.xcworkspace/xcuserdata/suryadas.xcuserdatad/UserInterfaceState.xcuserstate
