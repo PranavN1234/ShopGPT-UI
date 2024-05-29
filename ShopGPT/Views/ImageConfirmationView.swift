@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ImageConfirmationView: View {
     @ObservedObject var viewModel: ImageUploadViewModel
+    @Environment(\.presentationMode) var presentationMode
     @State private var navigateToUploadedView = false
     
     var body: some View {
-        NavigationStack {
+        NavigationStack{
             VStack {
                 if let selectedImage = viewModel.selectedImage {
                     Image(uiImage: selectedImage)
@@ -21,13 +22,11 @@ struct ImageConfirmationView: View {
                         .frame(height: 300)
                         .padding()
                     
-                    if let productName = viewModel.productName {
-                        Text("Product Name: \(productName)")
-                            .font(.headline)
-                            .padding()
-                    }
-                    
-                    Button(action: { viewModel.reset() }) {
+                    Button(action: {
+                        viewModel.reset()
+                        presentationMode.wrappedValue.dismiss()
+                        navigateToUploadedView = false
+                    }) {
                         Text("Reset")
                             .foregroundColor(.white)
                             .padding()
@@ -59,12 +58,10 @@ struct ImageConfirmationView: View {
                 }
             }
             .navigationDestination(isPresented: $navigateToUploadedView) {
-                ImageUploadedView(viewModel: viewModel)
-            }
+                            ImageUploadedView(viewModel: viewModel)
+                        }
             .navigationBarBackButtonHidden(true)
         }
+        
     }
-}
-#Preview {
-    ImageConfirmationView(viewModel: ImageUploadViewModel())
 }
