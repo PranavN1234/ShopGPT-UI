@@ -13,6 +13,30 @@ struct ImageSelectionView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                
+                BrandingView().padding()
+                
+                ZStack {
+                    Rectangle()
+                        .fill(Color.white) // Sets the interior color to white
+                        .frame(width: 300, height: 450) // Specify the size of the rectangle
+                    
+                        .overlay(
+                            Rectangle()
+                                .stroke(Color.gray, lineWidth: 4)
+                                .cornerRadius(5)
+                        )
+                    
+                    Image(systemName: "photo.on.rectangle")
+                        .resizable() // Allows the image to resize
+                        .aspectRatio(contentMode: .fit) // Maintains the aspect ratio while fitting within the frame
+                        .frame(width: 75, height: 75)
+                    
+                }
+                .padding()
+                
+                Spacer()
+                
                 Text("No image Selected")
                     .foregroundColor(.gray)
                     .padding()
@@ -27,14 +51,16 @@ struct ImageSelectionView: View {
                                 .resizable()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(.blue)
-                            Text("Select from Gallery")
-                                .foregroundColor(.blue)
+                            Text("Select Photo")
+                                .foregroundColor(.black)
                         }
+                        .padding()
+                        .background(Color(UIColor.systemGray5))
+                        .cornerRadius(10)
+                        .frame(width: 150, height: 100)
                     }
                     .padding()
-                    .background(Color(UIColor.systemGray5))
-                    .cornerRadius(10)
-                    
+
                     Button(action: {
                         viewModel.isCamera = true
                         viewModel.isShowingImagePicker = true
@@ -44,15 +70,21 @@ struct ImageSelectionView: View {
                                 .resizable()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(.green)
-                            Text("Take a photo")
-                                .foregroundColor(.green)
+                            Text("Take a Photo")
+                                .foregroundColor(.black)
                         }
                         .padding()
                         .background(Color(UIColor.systemGray5))
                         .cornerRadius(10)
+                        .frame(width: 150, height: 100)
                     }
                     .padding()
                 }
+                .frame(maxWidth: .infinity)
+
+                Spacer()
+                
+                
                 
                 NavigationLink(destination: ImageConfirmationView(viewModel: viewModel), isActive: $viewModel.isShowingImageConfirmation) {
                     EmptyView()

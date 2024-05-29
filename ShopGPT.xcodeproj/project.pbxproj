@@ -20,6 +20,7 @@
 		4E5CAAE22C04272D00EBA9BC /* ImageUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAE12C04272D00EBA9BC /* ImageUploadViewModel.swift */; };
 		4E5CAAE42C04275D00EBA9BC /* NavigationDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAE32C04275D00EBA9BC /* NavigationDestination.swift */; };
 		4E5CAAE62C04277300EBA9BC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAE52C04277300EBA9BC /* Product.swift */; };
+		4E5CAAEA2C06CF5700EBA9BC /* BrandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAE92C06CF5700EBA9BC /* BrandingView.swift */; };
 		655AF0602C05A5FD00B8C8E7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF05F2C05A5FD00B8C8E7 /* LoginView.swift */; };
 		655AF0622C05A81000B8C8E7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF0612C05A81000B8C8E7 /* LoginViewModel.swift */; };
 		655AF0642C05AB1A00B8C8E7 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655AF0632C05AB1A00B8C8E7 /* Countries.swift */; };
@@ -49,6 +50,7 @@
 		4E5CAAE12C04272D00EBA9BC /* ImageUploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadViewModel.swift; sourceTree = "<group>"; };
 		4E5CAAE32C04275D00EBA9BC /* NavigationDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDestination.swift; sourceTree = "<group>"; };
 		4E5CAAE52C04277300EBA9BC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		4E5CAAE92C06CF5700EBA9BC /* BrandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingView.swift; sourceTree = "<group>"; };
 		655AF05F2C05A5FD00B8C8E7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		655AF0612C05A81000B8C8E7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		655AF0632C05AB1A00B8C8E7 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				655AF06D2C067D6500B8C8E7 /* ImageSelectionView.swift */,
 				655AF06F2C06815500B8C8E7 /* ImageConfirmationView.swift */,
 				655AF0712C0684E400B8C8E7 /* ImageUploadedView.swift */,
+				4E5CAAE92C06CF5700EBA9BC /* BrandingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				655AF06A2C05C19A00B8C8E7 /* LoginService.swift in Sources */,
 				655AF06E2C067D6500B8C8E7 /* ImageSelectionView.swift in Sources */,
 				658686462C051EC400BF1A6F /* ProductCarouselView.swift in Sources */,
+				4E5CAAEA2C06CF5700EBA9BC /* BrandingView.swift in Sources */,
 				655AF0642C05AB1A00B8C8E7 /* Countries.swift in Sources */,
 				4E5CAADA2C04267D00EBA9BC /* ProductListView.swift in Sources */,
 				655AF0662C05B32400B8C8E7 /* VerificationView.swift in Sources */,
@@ -386,7 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ShopGPT/Preview Content\"";
-				DEVELOPMENT_TEAM = 6AW6QP4A28;
+				DEVELOPMENT_TEAM = 42STJARHN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShopGPT/Info.plist;
@@ -403,7 +407,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shopGPTUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shopGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -419,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ShopGPT/Preview Content\"";
-				DEVELOPMENT_TEAM = 6AW6QP4A28;
+				DEVELOPMENT_TEAM = 42STJARHN7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ShopGPT/Info.plist;
@@ -436,7 +440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shopGPTUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shopGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
