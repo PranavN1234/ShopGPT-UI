@@ -18,10 +18,12 @@ struct ImageConfirmationView: View {
                 if let selectedImage = viewModel.selectedImage {
                     Image(uiImage: selectedImage)
                         .resizable()
-                        .scaledToFit()
+                        
                         .frame(height: 300)
                         .padding()
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                     
+<<<<<<< Updated upstream
                     Button(action: {
                         viewModel.reset()
                         presentationMode.wrappedValue.dismiss()
@@ -32,19 +34,37 @@ struct ImageConfirmationView: View {
                             .padding()
                             .background(Color.red)
                             .cornerRadius(10)
-                    }
-                    .padding()
-                    
-                    Button(action: {
-                        viewModel.uploadImage()
-                    }) {
-                        Text("Upload Image")
-                            .foregroundColor(.white)
+=======
+                    if let productName = viewModel.productName {
+                        Text("Product Name: \(productName)")
+                            .font(.headline)
                             .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
                     }
-                    .padding()
+                    HStack{
+                        Button(action: { viewModel.reset() }) {
+                            Text("Retake Photo")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.red)
+                                .cornerRadius(10)
+                        }
+                        .padding()
+                        
+                        Button(action: {
+                            viewModel.uploadImage()
+                        }) {
+                            Text("Upload Photo")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                        }
+                        .padding()
+>>>>>>> Stashed changes
+                    }
+                    .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    
+                    
                 } else {
                     Text("No image selected")
                         .foregroundColor(.gray)
