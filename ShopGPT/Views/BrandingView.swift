@@ -10,6 +10,7 @@ import SwiftUI
 struct BrandingView: View {
     var body: some View {
         VStack {
+
             Text("ShopGPT")
                 .font(.system(size: 45, weight: .bold, design: .rounded)) // Specified size, bold weight, rounded design
                 .foregroundColor(.black)
@@ -18,6 +19,7 @@ struct BrandingView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top) // Ensures VStack fills the parent and aligns text to the top
         
+
         
     }
 }
