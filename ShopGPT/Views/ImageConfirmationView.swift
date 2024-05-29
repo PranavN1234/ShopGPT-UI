@@ -9,40 +9,48 @@ import SwiftUI
 
 struct ImageConfirmationView: View {
     @ObservedObject var viewModel: ImageUploadViewModel
-    @Environment(\.presentationMode) var presentationMode
     @State private var navigateToUploadedView = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             VStack {
+                BrandingView().padding(-30)
                 if let selectedImage = viewModel.selectedImage {
-                    Image(uiImage: selectedImage)
-                        .resizable()
+                    ZStack{
+                        Rectangle()
+                            .fill(Color.white) // Sets the interior color to white
+                            .frame(width: 300, height: 450) // Specify the size of the rectangle
                         
-                        .frame(height: 300)
-                        .padding()
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                    
-<<<<<<< Updated upstream
-                    Button(action: {
-                        viewModel.reset()
-                        presentationMode.wrappedValue.dismiss()
-                        navigateToUploadedView = false
-                    }) {
-                        Text("Reset")
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.red)
-                            .cornerRadius(10)
-=======
-                    if let productName = viewModel.productName {
-                        Text("Product Name: \(productName)")
-                            .font(.headline)
-                            .padding()
+                            .overlay(
+                                Rectangle()
+                                    .stroke(Color.gray, lineWidth: 4)
+                                    .cornerRadius(5)
+                            )
+                        
+                        Image(uiImage: viewModel.selectedImage ?? UIImage(named: "defaultImage")!)
+                            .resizable()
+                            .scaledToFill()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width:300, height: 450)
                     }
+                    .padding()
+                    Spacer()
+                    
+                   
+                    
+                    
+                    Text("")
+                        .foregroundColor(.gray)
+                        .padding()
+                    
                     HStack{
-                        Button(action: { viewModel.reset() }) {
-                            Text("Retake Photo")
+                        Button(action: {
+                            viewModel.reset()
+                            presentationMode.wrappedValue.dismiss()
+                            navigateToUploadedView = false
+                        }) {
+                            Text("Retake Image")
                                 .foregroundColor(.white)
                                 .padding()
                                 .background(Color.red)
@@ -53,17 +61,16 @@ struct ImageConfirmationView: View {
                         Button(action: {
                             viewModel.uploadImage()
                         }) {
-                            Text("Upload Photo")
+                            Text("Upload Image")
                                 .foregroundColor(.white)
                                 .padding()
                                 .background(Color.blue)
                                 .cornerRadius(10)
                         }
                         .padding()
->>>>>>> Stashed changes
                     }
-                    .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    
+                    .frame(maxWidth: .infinity)
+                    Spacer()
                     
                 } else {
                     Text("No image selected")
@@ -78,10 +85,19 @@ struct ImageConfirmationView: View {
                 }
             }
             .navigationDestination(isPresented: $navigateToUploadedView) {
-                            ImageUploadedView(viewModel: viewModel)
-                        }
+                ImageUploadedView(viewModel: viewModel)
+            }
             .navigationBarBackButtonHidden(true)
         }
-        
     }
 }
+
+
+
+
+#Preview {
+    ImageConfirmationView(viewModel: ImageUploadViewModel())
+}
+
+
+
