@@ -49,7 +49,7 @@ struct ImageSelectionView: View {
                         VStack {
                             Image(systemName: "photo")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: 40, height: 40)
                                 .foregroundColor(.blue)
                             Text("Select Photo")
                                 .foregroundColor(.black)
@@ -59,7 +59,7 @@ struct ImageSelectionView: View {
                         .cornerRadius(10)
                         .frame(width: 150, height: 100)
                     }
-                    .padding()
+                    
 
                     Button(action: {
                         viewModel.isCamera = true
@@ -68,7 +68,7 @@ struct ImageSelectionView: View {
                         VStack {
                             Image(systemName: "camera")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: 40, height: 40)
                                 .foregroundColor(.green)
                             Text("Take a Photo")
                                 .foregroundColor(.black)
@@ -76,11 +76,11 @@ struct ImageSelectionView: View {
                         .padding()
                         .background(Color(UIColor.systemGray5))
                         .cornerRadius(10)
-                        .frame(width: 150, height: 100)
+                        .frame(width: 160, height: 100)
                     }
-                    .padding()
+                    
                 }
-                .frame(maxWidth: .infinity)
+                .frame(alignment: .center)
 
                 Spacer()
                 

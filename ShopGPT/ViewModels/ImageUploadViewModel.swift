@@ -12,7 +12,7 @@ class ImageUploadViewModel: ObservableObject {
 
     func uploadImage() {
         guard let selectedImage = selectedImage else { return }
-
+        isLoading = true
         ImageUploadService.shared.uploadImage(selectedImage) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
