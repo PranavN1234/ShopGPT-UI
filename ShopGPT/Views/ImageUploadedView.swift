@@ -9,18 +9,16 @@ import SwiftUI
 
 struct ImageUploadedView: View {
     @ObservedObject var viewModel: ImageUploadViewModel
-    @State private var navigationPath = NavigationPath()
+    @ObservedObject var loginData: LoginViewModel
     @State private var isLoading = false
-    
+
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            VStack {
-                BrandingView().padding(20)
-                Spacer()
-                if let selectedImage = viewModel.selectedImage {
-                    ZStack{
-                        
-                        
+
+        VStack {
+            BrandingView().padding(20)
+            Spacer()
+            if let selectedImage = viewModel.selectedImage {
+                ZStack{
                         Image(uiImage: viewModel.selectedImage ?? UIImage(named: "defaultImage")!)
                             .resizable()
                             .scaledToFill()
@@ -29,19 +27,21 @@ struct ImageUploadedView: View {
                             .cornerRadius(10)
                     }
                     .padding()
+                
+                if let productName = viewModel.productName {
+                    Text("Product Name: \(productName)")
+                        .font(.headline)
                     
-                    
-                    if let productName = viewModel.productName {
-                        Text("Product Name: \(productName)")
-//                Text("Product Name: product")
-                            .font(.headline)
-                        
+                    NavigationLink(destination: ProductCarouselView(products: viewModel.products, loginData: loginData)
+                                    .environmentObject(loginData),
+                                   isActive: $viewModel.navigateToProducts) {
+
                         Button(action: {
                             isLoading = true
                             viewModel.navigateToLoadingAndFetchProducts {
                                 DispatchQueue.main.async {
                                     isLoading = false
-                                    navigationPath.append(NavigationDestination.products)
+                                    viewModel.navigateToProducts = true
                                 }
                             }
                         }) {
@@ -60,35 +60,21 @@ struct ImageUploadedView: View {
                         }
                         .padding()
                     }
-                } else {
-                    Text("No image selected")
-                        .foregroundColor(.gray)
-                        .padding()
                 }
+            } else {
+                Text("No image selected")
+                    .foregroundColor(.gray)
+                    .padding()
             }
-            
-            Spacer()
-            
-            
-            .navigationDestination(for: NavigationDestination.self) { destination in
-                switch destination {
-                case .products:
-                    ProductCarouselView(products: viewModel.products)
-                        .onAppear {
-                            viewModel.resetNavigation()
-                        }
-                default:
-                    EmptyView()
-                }
-            }
-            .fullScreenCover(isPresented: $isLoading) {
-                LoadingView()
-            }
+        }
+        .padding()
+        .fullScreenCover(isPresented: $isLoading) {
+            LoadingView()
         }
         .navigationBarBackButtonHidden(false)
     }
 }
 
 #Preview {
-    ImageUploadedView(viewModel: ImageUploadViewModel())
+    ImageUploadedView(viewModel: ImageUploadViewModel(), loginData: LoginViewModel())
 }

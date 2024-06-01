@@ -8,5 +8,5 @@
 import Foundation
 
 struct Config {
-    static var baseURL: String = "https://ece8-2600-4808-6030-1400-d040-72a4-68b2-4640.ngrok-free.app" 
+    static var baseURL: String = "https://ece8-2600-4808-6030-1400-d040-72a4-68b2-4640.ngrok-free.app"
 }

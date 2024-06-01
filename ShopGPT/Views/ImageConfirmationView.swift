@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ImageConfirmationView: View {
     @ObservedObject var viewModel: ImageUploadViewModel
+    @ObservedObject var loginData: LoginViewModel
     @State private var navigateToUploadedView = false
+    @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
     @State private var isLoading = false
     
@@ -24,7 +26,6 @@ struct ImageConfirmationView: View {
                 if let selectedImage = viewModel.selectedImage {
                     ZStack{
                         
-                        
                         Image(uiImage: viewModel.selectedImage ?? UIImage(named: "defaultImage")!)
                             .resizable()
                             .scaledToFill()
@@ -38,7 +39,7 @@ struct ImageConfirmationView: View {
                         .foregroundColor(.gray)
                         .padding()
                     
-                    HStack{
+                    HStack {
                         Button(action: {
                             viewModel.reset()
                             presentationMode.wrappedValue.dismiss()
@@ -62,7 +63,25 @@ struct ImageConfirmationView: View {
                         
                         
                         Button(action: {
-                            viewModel.uploadImage()
+                            print("tries are \(loginData.tries)")
+                            if loginData.tries > 0 {
+                                isLoading = true
+                                viewModel.uploadImage { success in
+                                    if success {
+                                        print("reducing tries")
+                                        loginData.decrementUserTries()
+                                        DispatchQueue.main.async {
+                                            isLoading = false
+                                            navigateToUploadedView = true
+                                        }
+                                    } else {
+                                        isLoading = false
+                                    }
+                                }
+                            } else {
+                                loginData.errorMessage = "Maximum tries exceeded"
+                                loginData.showAlert = true
+                            }
                         }) {
                             VStack{
                                 Image(systemName:"square.and.arrow.up")
@@ -83,7 +102,6 @@ struct ImageConfirmationView: View {
                     }
                     .frame(alignment: .center)
                     Spacer()
-                    
                 } else {
                     Text("No image selected")
                         .foregroundColor(.gray)
@@ -91,28 +109,25 @@ struct ImageConfirmationView: View {
                 }
             }
             .padding()
-            .onChange(of: viewModel.productName) { _ in
-                if viewModel.productName != nil {
-                    navigateToUploadedView = true
-                }
-            }
-            
             .navigationDestination(isPresented: $navigateToUploadedView) {
-                ImageUploadedView(viewModel: viewModel)
+                ImageUploadedView(viewModel: viewModel, loginData: loginData)
+            }
+            .fullScreenCover(isPresented: $isLoading) {
+                LoadingView()
             }
             
             .navigationBarBackButtonHidden(true)
-            
+            .alert(isPresented: $loginData.showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(loginData.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }
 
-
-
-
 #Preview {
-    ImageConfirmationView(viewModel: ImageUploadViewModel())
+    ImageConfirmationView(viewModel: ImageUploadViewModel(), loginData: LoginViewModel())
 }
-
-
-
