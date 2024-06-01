@@ -13,43 +13,28 @@ struct ImageConfirmationView: View {
     @State private var navigateToUploadedView = false
     @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
+    @State private var isLoading = false
     
     var body: some View {
         NavigationStack {
             VStack {
-                HStack {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(.black)
-                            .padding()
-                    }
-                    Spacer()
-                    BrandingView()
-                        .padding()
-                }
-                
+                BrandingView().padding(-30)
+                Spacer()
+                Text("")
+                    .foregroundColor(.gray)
+                    .padding()
                 if let selectedImage = viewModel.selectedImage {
-                    ZStack {
-                        Rectangle()
-                            .fill(Color.white)
-                            .frame(width: 300, height: 450)
-                            .overlay(
-                                Rectangle()
-                                    .stroke(Color.gray, lineWidth: 4)
-                                    .cornerRadius(5)
-                            )
+                    ZStack{
                         
                         Image(uiImage: viewModel.selectedImage ?? UIImage(named: "defaultImage")!)
                             .resizable()
                             .scaledToFill()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 300, height: 450)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width:300, height: 450)
+                            .cornerRadius(10)
                     }
                     .padding()
                     Spacer()
-                    
                     Text("")
                         .foregroundColor(.gray)
                         .padding()
@@ -60,13 +45,22 @@ struct ImageConfirmationView: View {
                             presentationMode.wrappedValue.dismiss()
                             navigateToUploadedView = false
                         }) {
-                            Text("Retake Image")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.red)
-                                .cornerRadius(10)
+                            VStack{
+                                Image(systemName: "photo.badge.plus")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.blue)
+                                Text("Retake Image")
+                                    .foregroundColor(.black)
+                                
+                            }
+                            .padding()
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                            .frame(width: 150, height: 100)
+                            
                         }
-                        .padding()
+                        
                         
                         Button(action: {
                             print("tries are \(loginData.tries)")
@@ -89,15 +83,24 @@ struct ImageConfirmationView: View {
                                 loginData.showAlert = true
                             }
                         }) {
-                            Text("Upload Image")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(10)
+                            VStack{
+                                Image(systemName:"square.and.arrow.up")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.blue)
+                                Text("Upload Image")
+                                    .foregroundColor(.black)
+                                
+                            }
+                            .padding()
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                            .frame(width: 150, height: 100)
+                            
                         }
-                        .padding()
+                        
                     }
-                    .frame(maxWidth: .infinity)
+                    .frame(alignment: .center)
                     Spacer()
                 } else {
                     Text("No image selected")
@@ -112,6 +115,7 @@ struct ImageConfirmationView: View {
             .fullScreenCover(isPresented: $isLoading) {
                 LoadingView()
             }
+            
             .navigationBarBackButtonHidden(true)
             .alert(isPresented: $loginData.showAlert) {
                 Alert(

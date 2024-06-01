@@ -13,22 +13,29 @@ struct ImageUploadedView: View {
     @State private var isLoading = false
 
     var body: some View {
+
         VStack {
+            BrandingView().padding(20)
+            Spacer()
             if let selectedImage = viewModel.selectedImage {
-                Image(uiImage: selectedImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 300)
+                ZStack{
+                        Image(uiImage: viewModel.selectedImage ?? UIImage(named: "defaultImage")!)
+                            .resizable()
+                            .scaledToFill()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width:300, height: 450)
+                            .cornerRadius(10)
+                    }
                     .padding()
                 
                 if let productName = viewModel.productName {
                     Text("Product Name: \(productName)")
                         .font(.headline)
-                        .padding()
                     
                     NavigationLink(destination: ProductCarouselView(products: viewModel.products, loginData: loginData)
                                     .environmentObject(loginData),
                                    isActive: $viewModel.navigateToProducts) {
+
                         Button(action: {
                             isLoading = true
                             viewModel.navigateToLoadingAndFetchProducts {
@@ -38,11 +45,18 @@ struct ImageUploadedView: View {
                                 }
                             }
                         }) {
-                            Text("Shop for Products")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(10)
+                            HStack {
+                                Image(systemName: "cart")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.blue)
+                                Text("Shop for Products")
+                                    .foregroundColor(.black)
+                            }
+                            .padding()
+                            .background(Color(UIColor.systemGray5))
+                            .cornerRadius(10)
+                            .frame(width: 290, height: 100)
                         }
                         .padding()
                     }
@@ -57,7 +71,7 @@ struct ImageUploadedView: View {
         .fullScreenCover(isPresented: $isLoading) {
             LoadingView()
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(false)
     }
 }
 

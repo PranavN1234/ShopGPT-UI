@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E4C7E6E2C0943B300B17E81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4C7E6D2C0943B300B17E81 /* LaunchScreen.storyboard */; };
 		4E5CAAC22C0424F600EBA9BC /* ShopGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAC12C0424F600EBA9BC /* ShopGPTApp.swift */; };
 		4E5CAAC42C0424F600EBA9BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5CAAC32C0424F600EBA9BC /* ContentView.swift */; };
 		4E5CAAC62C0424FB00EBA9BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E5CAAC52C0424FB00EBA9BC /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E4C7E6D2C0943B300B17E81 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E5CAABE2C0424F600EBA9BC /* ShopGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5CAAC12C0424F600EBA9BC /* ShopGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGPTApp.swift; sourceTree = "<group>"; };
 		4E5CAAC32C0424F600EBA9BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				4E5CAAC12C0424F600EBA9BC /* ShopGPTApp.swift */,
 				4E5CAAC52C0424FB00EBA9BC /* Assets.xcassets */,
 				4E5CAAC72C0424FB00EBA9BC /* Preview Content */,
+				4E4C7E6D2C0943B300B17E81 /* LaunchScreen.storyboard */,
 			);
 			path = ShopGPT;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4C7E6E2C0943B300B17E81 /* LaunchScreen.storyboard in Resources */,
 				4E5CAAC92C0424FB00EBA9BC /* Preview Assets.xcassets in Resources */,
 				4E5CAAC62C0424FB00EBA9BC /* Assets.xcassets in Resources */,
 			);
@@ -389,6 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ShopGPT/Preview Content\"";
@@ -400,7 +405,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library to select photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
@@ -422,6 +427,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ShopGPT/Preview Content\"";
@@ -433,7 +439,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library to select photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
