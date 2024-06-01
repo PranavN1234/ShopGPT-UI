@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var loginData = LoginViewModel()
+
     var body: some View {
-        NavigationView{
-            ImageSelectionView()
+        NavigationView {
+            if loginData.isLoggedIn {
+                ImageSelectionView(loginData: loginData)
+            } else {
+                LoginView()
+            }
         }
+        .environmentObject(loginData)
     }
 }
 

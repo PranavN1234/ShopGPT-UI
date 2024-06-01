@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ImageSelectionView: View {
     @StateObject private var viewModel = ImageUploadViewModel()
+    @ObservedObject var loginData: LoginViewModel
+    
     
     var body: some View {
         NavigationStack {
@@ -86,7 +88,7 @@ struct ImageSelectionView: View {
                 
                 
                 
-                NavigationLink(destination: ImageConfirmationView(viewModel: viewModel), isActive: $viewModel.isShowingImageConfirmation) {
+                NavigationLink(destination: ImageConfirmationView(viewModel: viewModel, loginData: loginData), isActive: $viewModel.isShowingImageConfirmation) {
                     EmptyView()
                 }
             }
@@ -105,5 +107,5 @@ struct ImageSelectionView: View {
 
 
 #Preview {
-    ImageSelectionView()
+    ImageSelectionView(loginData: LoginViewModel())
 }

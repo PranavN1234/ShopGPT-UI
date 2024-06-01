@@ -9,30 +9,32 @@ import SwiftUI
 
 struct ImageUploadedView: View {
     @ObservedObject var viewModel: ImageUploadViewModel
-    @State private var navigationPath = NavigationPath()
+    @ObservedObject var loginData: LoginViewModel
     @State private var isLoading = false
-    
+
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            VStack {
-                if let selectedImage = viewModel.selectedImage {
-                    Image(uiImage: selectedImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 300)
+        VStack {
+            if let selectedImage = viewModel.selectedImage {
+                Image(uiImage: selectedImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300)
+                    .padding()
+                
+                if let productName = viewModel.productName {
+                    Text("Product Name: \(productName)")
+                        .font(.headline)
                         .padding()
                     
-                    if let productName = viewModel.productName {
-                        Text("Product Name: \(productName)")
-                            .font(.headline)
-                            .padding()
-                        
+                    NavigationLink(destination: ProductCarouselView(products: viewModel.products, loginData: loginData)
+                                    .environmentObject(loginData),
+                                   isActive: $viewModel.navigateToProducts) {
                         Button(action: {
                             isLoading = true
                             viewModel.navigateToLoadingAndFetchProducts {
                                 DispatchQueue.main.async {
                                     isLoading = false
-                                    navigationPath.append(NavigationDestination.products)
+                                    viewModel.navigateToProducts = true
                                 }
                             }
                         }) {
@@ -44,32 +46,21 @@ struct ImageUploadedView: View {
                         }
                         .padding()
                     }
-                } else {
-                    Text("No image selected")
-                        .foregroundColor(.gray)
-                        .padding()
                 }
+            } else {
+                Text("No image selected")
+                    .foregroundColor(.gray)
+                    .padding()
             }
-            .padding()
-            .navigationDestination(for: NavigationDestination.self) { destination in
-                switch destination {
-                case .products:
-                    ProductCarouselView(products: viewModel.products)
-                        .onAppear {
-                            viewModel.resetNavigation()
-                        }
-                default:
-                    EmptyView()
-                }
-            }
-            .fullScreenCover(isPresented: $isLoading) {
-                LoadingView()
-            }
+        }
+        .padding()
+        .fullScreenCover(isPresented: $isLoading) {
+            LoadingView()
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
 #Preview {
-    ImageUploadedView(viewModel: ImageUploadViewModel())
+    ImageUploadedView(viewModel: ImageUploadViewModel(), loginData: LoginViewModel())
 }

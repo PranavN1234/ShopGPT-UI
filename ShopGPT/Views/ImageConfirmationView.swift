@@ -9,19 +9,32 @@ import SwiftUI
 
 struct ImageConfirmationView: View {
     @ObservedObject var viewModel: ImageUploadViewModel
+    @ObservedObject var loginData: LoginViewModel
     @State private var navigateToUploadedView = false
+    @State private var isLoading = false
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationStack {
             VStack {
-                BrandingView().padding(-30)
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.black)
+                            .padding()
+                    }
+                    Spacer()
+                    BrandingView()
+                        .padding()
+                }
+                
                 if let selectedImage = viewModel.selectedImage {
-                    ZStack{
+                    ZStack {
                         Rectangle()
-                            .fill(Color.white) // Sets the interior color to white
-                            .frame(width: 300, height: 450) // Specify the size of the rectangle
-                        
+                            .fill(Color.white)
+                            .frame(width: 300, height: 450)
                             .overlay(
                                 Rectangle()
                                     .stroke(Color.gray, lineWidth: 4)
@@ -32,19 +45,16 @@ struct ImageConfirmationView: View {
                             .resizable()
                             .scaledToFill()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width:300, height: 450)
+                            .frame(width: 300, height: 450)
                     }
                     .padding()
                     Spacer()
-                    
-                   
-                    
                     
                     Text("")
                         .foregroundColor(.gray)
                         .padding()
                     
-                    HStack{
+                    HStack {
                         Button(action: {
                             viewModel.reset()
                             presentationMode.wrappedValue.dismiss()
@@ -59,7 +69,25 @@ struct ImageConfirmationView: View {
                         .padding()
                         
                         Button(action: {
-                            viewModel.uploadImage()
+                            print("tries are \(loginData.tries)")
+                            if loginData.tries > 0 {
+                                isLoading = true
+                                viewModel.uploadImage { success in
+                                    if success {
+                                        print("reducing tries")
+                                        loginData.decrementUserTries()
+                                        DispatchQueue.main.async {
+                                            isLoading = false
+                                            navigateToUploadedView = true
+                                        }
+                                    } else {
+                                        isLoading = false
+                                    }
+                                }
+                            } else {
+                                loginData.errorMessage = "Maximum tries exceeded"
+                                loginData.showAlert = true
+                            }
                         }) {
                             Text("Upload Image")
                                 .foregroundColor(.white)
@@ -71,7 +99,6 @@ struct ImageConfirmationView: View {
                     }
                     .frame(maxWidth: .infinity)
                     Spacer()
-                    
                 } else {
                     Text("No image selected")
                         .foregroundColor(.gray)
@@ -79,25 +106,24 @@ struct ImageConfirmationView: View {
                 }
             }
             .padding()
-            .onChange(of: viewModel.productName) { _ in
-                if viewModel.productName != nil {
-                    navigateToUploadedView = true
-                }
-            }
             .navigationDestination(isPresented: $navigateToUploadedView) {
-                ImageUploadedView(viewModel: viewModel)
+                ImageUploadedView(viewModel: viewModel, loginData: loginData)
+            }
+            .fullScreenCover(isPresented: $isLoading) {
+                LoadingView()
             }
             .navigationBarBackButtonHidden(true)
+            .alert(isPresented: $loginData.showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(loginData.errorMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }
 
-
-
-
 #Preview {
-    ImageConfirmationView(viewModel: ImageUploadViewModel())
+    ImageConfirmationView(viewModel: ImageUploadViewModel(), loginData: LoginViewModel())
 }
-
-
-

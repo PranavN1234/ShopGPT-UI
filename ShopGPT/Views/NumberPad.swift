@@ -40,16 +40,19 @@ struct NumberPad: View {
         }
         .padding()
     }
-    func getWidth(frame: CGRect)->CGFloat{
+    func getWidth(frame: CGRect) -> CGFloat {
         let width = frame.width
-        let actualWidth = width-40
-        return actualWidth/3
+        let actualWidth = width - 40
+        let safeWidth = max(actualWidth / 3, 0)
+        return safeWidth
     }
     
-    func getHeight(frame: CGRect)->CGFloat{
+    func getHeight(frame: CGRect) -> CGFloat {
         let height = frame.height
-        let actualHeight = height-30
-        return actualHeight/4
+        let actualHeight = height - 30
+        let safeHeight = max(actualHeight / 4, 0)
+        
+        return safeHeight
     }
     
     func buttonAction(value: String){
